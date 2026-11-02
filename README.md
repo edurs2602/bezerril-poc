@@ -16,16 +16,15 @@ npm run preview  # serve dist/ localmente
 
 ## Publicar
 
-O site é publicado no Cloudflare Pages, conectado a este repositório: cada push na `main` gera uma nova versão.
-Outras branches ganham um endereço próprio de pré-visualização.
+O site é publicado como Cloudflare Worker de arquivos estáticos, conectado a este repositório: cada push na `main`
+gera uma nova versão.
 
 | Configuração | Valor |
 | --- | --- |
 | Build command | `npm run build` |
-| Build output directory | `dist` |
-| Versão do Node | definida em `.nvmrc` |
+| Deploy command | `npx wrangler deploy` |
 
-O arquivo `public/_redirects` faz as rotas da aplicação funcionarem ao recarregar a página.
+O `wrangler.toml` aponta para `dist/` e faz as rotas da aplicação funcionarem ao recarregar a página.
 
 O login da demonstração não é uma autenticação real. Para restringir o acesso, configure a proteção na hospedagem.
 Não use dados reais neste protótipo.
