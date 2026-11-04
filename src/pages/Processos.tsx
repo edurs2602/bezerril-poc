@@ -148,8 +148,9 @@ export function Processos() {
                   <td data-rotulo="Prazo">{z ? <DiasUteis vencimento={z.vencimento} /> : <span className="fraco">—</span>}</td>
                   <td data-rotulo="Processo">
                     <Link to={`/processos/${p.id}`}><Cnj p={p} /></Link>
-                    <small>
-                      {p.assunto} {mudouHoje && <span className="marca-novo">Andou hoje</span>}
+                    <small className="processo-assunto">
+                      <span>{p.assunto}</span>
+                      {mudouHoje && <span className="marca-novo">Andou hoje</span>}
                     </small>
                   </td>
                   <td data-rotulo="Partes">

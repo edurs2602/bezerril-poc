@@ -36,8 +36,9 @@ export function SemResponsavel() {
         <Vazio>A fila está vazia: todo processo tem responsável.</Vazio>
       ) : (
         <>
-          <div className="filtros">
+          <div className="filtros barra-acao">
             <span className="nota">{vigentes.length} de {fila.length} selecionados</span>
+            <div className="barra-acao-destino">
             <label className="filtro-rotulo">
               Atribuir a
               <select value={destino} onChange={(e) => setDestino(e.target.value)}>
@@ -47,11 +48,12 @@ export function SemResponsavel() {
             <button type="button" className="botao botao-pequeno" disabled={!vigentes.length} onClick={redistribuir}>
               Redistribuir
             </button>
+            </div>
           </div>
           <table className="tabela">
             <thead>
               <tr>
-                <th scope="col">
+                <th scope="col" className="col-marca">
                   <input
                     type="checkbox"
                     aria-label="Selecionar todos"
@@ -70,8 +72,8 @@ export function SemResponsavel() {
               {fila.map((p) => {
                 const ultimo = estado.historico.find((h) => h.processoId === p.id && h.campo === "Responsável" && h.novo === "Sem responsável");
                 return (
-                  <tr key={p.id}>
-                    <td>
+                  <tr key={p.id} className={marcados.has(p.id) ? "marcada" : undefined}>
+                    <td className="col-marca">
                       <input type="checkbox" aria-label={`Selecionar ${p.cnj}`} checked={marcados.has(p.id)} onChange={() => alternar(p.id)} />
                     </td>
                     <td data-rotulo="Processo">

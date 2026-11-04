@@ -1,11 +1,85 @@
-.painel-grade { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--e8); align-items: start; }
+/* Painel de prazos: o gesto ousado */
+.partidas { background: var(--pinho); color: #fff; border-radius: 0; margin-bottom: var(--e8); padding-bottom: var(--e2); }
+.partidas a { color: #fff; text-decoration-color: #fff; }
+.partidas-cab { display: flex; justify-content: space-between; align-items: baseline; gap: var(--e4); padding: var(--e6) var(--e8) var(--e3); }
+.partidas-cab h2 { font-family: var(--serifa); font-size: var(--t-secao); font-weight: 600; line-height: 1.25; color: #fff; }
+.partidas-nota { margin-top: var(--e1); font-size: var(--t-mini); color: #fff; }
+.partidas-cab a { font-size: var(--t-mini); flex-shrink: 0; }
+.partidas-vazio { padding: var(--e4) var(--e8) var(--e8); color: #fff; font-size: var(--t-corpo); }
+
+.partidas-tabela { width: 100%; border-collapse: collapse; font-size: 15px; }
+.partidas-tabela thead th { text-align: left; font-weight: 500; font-size: var(--t-mini); color: #fff; padding: var(--e2) var(--e3); border-bottom: 1px solid rgba(255, 255, 255, 0.45); white-space: nowrap; }
+.partidas-tabela thead th:first-child { text-align: right; width: 168px; padding-left: var(--e8); }
+.partidas-tabela thead th:last-child, .partidas-tabela tbody td:last-child { padding-right: var(--e8); }
+.partidas-tabela tbody td { padding: var(--e4) var(--e3); border-bottom: 1px solid rgba(255, 255, 255, 0.16); vertical-align: middle; color: #fff; }
+.partidas-tabela tbody tr:last-child td { border-bottom: 0; }
+.partidas-tabela tbody tr:hover td { background: rgba(255, 255, 255, 0.07); }
+.partidas-tabela tbody td:first-child { padding-left: var(--e8); text-align: right; }
+.partidas-prazo > a { font-size: 18px; font-weight: 600; line-height: 1.3; }
+.partidas-prazo small { display: block; margin-top: 2px; font-size: var(--t-mini); color: #fff; }
+.partidas-venc, .partidas-resp { font-size: 15px; }
+
+/* Numeral + unidade */
+.contagem-du { display: block; }
+.contagem-visual { display: inline-flex; align-items: baseline; justify-content: flex-end; gap: var(--e2); }
+.contagem-num { font-family: var(--serifa); font-size: var(--t-numeral); font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; padding: 0 var(--e2); }
+.contagem-un { font-size: var(--t-mini); color: #fff; min-width: 2.6em; text-align: left; }
+.contagem-du.hoje .contagem-num { font-size: 32px; padding: 0 var(--e3); }
+.contagem-du.hoje .contagem-visual { margin-right: calc(2.6em + var(--e2)); }
+.contagem-du.u5 .contagem-num { color: #fff; }
+.contagem-du.u3 .contagem-num { color: var(--ambar-vivo); }
+.contagem-du.u1 .contagem-num { background: var(--lacre-vivo); color: #fff; }
+
+/* Entrada das linhas na carga */
+@keyframes partida-entra { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.partidas-tabela tbody tr { animation: partida-entra 120ms ease-out backwards; }
+.partidas-tabela tbody tr:nth-child(2) { animation-delay: 15ms; }
+.partidas-tabela tbody tr:nth-child(3) { animation-delay: 30ms; }
+.partidas-tabela tbody tr:nth-child(4) { animation-delay: 45ms; }
+.partidas-tabela tbody tr:nth-child(5) { animation-delay: 60ms; }
+
+.indicadores { margin-top: 0; margin-bottom: var(--e14); }
+
+/* CNJ em tabela: discreto */
+.painel .tabela td a { color: var(--tinta); font-weight: 500; text-decoration: none; }
+.painel .tabela td a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
+
+.painel-grade { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: var(--e14); align-items: start; }
 
 .fases { width: 100%; border-collapse: collapse; }
-.fases th { text-align: left; font-weight: 400; padding: var(--e1) var(--e3) var(--e1) 0; white-space: nowrap; width: 1%; color: var(--tinta-2); }
+.fases th { text-align: left; font-weight: 400; padding: var(--e1) var(--e3) var(--e1) 0; white-space: nowrap; width: 8.5em; color: var(--tinta); }
 .fases-barra { padding: var(--e1) 0; }
-.fases-barra span { display: block; height: 10px; border-radius: var(--raio-carimbo); background: var(--pinho); min-width: 2px; }
-.fases .num { width: 34px; padding-left: var(--e2); font-weight: 500; }
+.fases .trilha { display: block; height: 12px; background: var(--papel-2); }
+.fases .trilha span { display: block; height: 12px; background: var(--pinho); min-width: 2px; }
+.fases .num { width: 34px; padding-left: var(--e2); font-weight: 600; }
 
 @media (max-width: 1040px) {
   .painel-grade { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+
+@media (max-width: 720px) {
+  .partidas { margin: 0 calc(-1 * var(--e4)) var(--e8); }
+  .partidas-cab { padding: var(--e4) var(--e4) var(--e2); }
+  .partidas-vazio { padding: var(--e2) var(--e4) var(--e6); }
+  .partidas-tabela thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .partidas-tabela, .partidas-tabela tbody { display: block; }
+  .partidas-tabela tbody tr {
+    display: grid; grid-template-columns: 92px auto 1fr; column-gap: var(--e3); align-items: center;
+    padding: var(--e3) var(--e4); border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+  .partidas-tabela tbody tr:last-child { border-bottom: 0; }
+  .partidas-tabela tbody td { display: block; padding: 0; border: 0; }
+  .partidas-tabela tbody td:first-child { grid-column: 1; grid-row: 1 / span 2; padding: 0; }
+  .partidas-tabela tbody td:last-child { padding-right: 0; }
+  .partidas-prazo { grid-column: 2 / -1; grid-row: 1; min-width: 0; }
+  .partidas-prazo > a { font-size: 17px; }
+  .partidas-venc { grid-column: 2; grid-row: 2; font-size: var(--t-mini); margin-top: var(--e1); }
+  .partidas-resp { grid-column: 3; grid-row: 2; font-size: var(--t-mini); margin-top: var(--e1); }
+  .partidas-prazo small .cnj { white-space: normal; overflow-wrap: anywhere; }
+  .contagem-num { font-size: 36px; padding: 0 6px; }
+  .contagem-du.hoje .contagem-num { font-size: 26px; padding: 0 var(--e2); }
+  .contagem-du.hoje .contagem-visual { margin-right: calc(2.6em + var(--e2)); }
+  .contagem-visual { gap: 4px; }
+  .indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e6) var(--e4); margin-bottom: var(--e10); }
+  .fases th { width: 7em; white-space: normal; }
 }

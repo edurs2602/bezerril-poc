@@ -14,10 +14,10 @@ export function Acessos() {
     return (
       <div>
         <Titulo>Acessos aos tribunais</Titulo>
-        <Vazio>
+        <div className="acessos-vazio"><Vazio>
           Estagiários não cadastram acesso aos sistemas dos tribunais (RN17). Seus processos são consultados com o acesso
           de referência definido pelo administrador.
-        </Vazio>
+        </Vazio></div>
       </div>
     );
   }
@@ -54,7 +54,7 @@ export function Acessos() {
               </td>
               <td data-rotulo="Seus processos" className="num">{parados(a.sistema)}</td>
               <td data-rotulo="Atualizado">{a.status === "nao_cadastrado" ? "—" : dataCurta(a.atualizadoEm)}</td>
-              <td>
+              <td className="acoes">
                 <button type="button" className="link" onClick={() => setEditando(a)}>
                   {a.status === "nao_cadastrado" ? "Cadastrar" : "Atualizar"}
                 </button>

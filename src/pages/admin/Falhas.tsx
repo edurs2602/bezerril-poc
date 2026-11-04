@@ -88,7 +88,7 @@ function TabelaFalhas({ processos, onConsultar }: { processos: Processo[]; onCon
           <th scope="col">Responsável</th>
           <th scope="col" className="num">Tentativas</th>
           <th scope="col">Última com sucesso</th>
-          <th scope="col"><span className="sr">Ação</span></th>
+          <th scope="col" className="acoes-cab"><span className="sr">Ação</span></th>
         </tr>
       </thead>
       <tbody>
@@ -102,7 +102,7 @@ function TabelaFalhas({ processos, onConsultar }: { processos: Processo[]; onCon
             <td data-rotulo="Responsável">{nomeUsuario(estado, p.responsavelId)}</td>
             <td data-rotulo="Tentativas" className="num">{p.captura.tentativas ?? 0}</td>
             <td data-rotulo="Última com sucesso">{dataHora(p.captura.ultimaConsulta)}</td>
-            <td>
+            <td className="acoes">
               {onConsultar && (
                 <button type="button" className="link" onClick={() => onConsultar(p.id)}>Consultar agora</button>
               )}

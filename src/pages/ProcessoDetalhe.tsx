@@ -43,8 +43,8 @@ export function ProcessoDetalhe() {
         <p className="detalhe-partes">
           {p.autor} <em>contra</em> {p.reu}
         </p>
-        <p className="nota">
-          {p.assunto} · {p.vara} · {p.sistema}
+        <p className="detalhe-meta">
+          <span>{p.assunto}</span> <span>{p.vara}</span> <span>{p.sistema}</span>
         </p>
         <div className="detalhe-carimbos">
           {p.segredo && <Carimbo tom="neutro">Segredo de justiça</Carimbo>}
@@ -118,7 +118,7 @@ export function ProcessoDetalhe() {
           )}
         </div>
 
-        <aside className="detalhe-lateral">
+        <div className="detalhe-lateral">
           <Secao
             titulo="Prazos"
             acao={
@@ -139,8 +139,11 @@ export function ProcessoDetalhe() {
                       <span className="nota">
                         {diaDaSemana(z.vencimento)}, {dataCurta(z.vencimento)}
                       </span>
-                      <span className="nota">
-                        Avisos: {datasDeAviso(z.vencimento).map((a) => `${a.dias} d.u. em ${dataCurta(a.data).slice(0, 5)}`).join(" · ")}
+                      <span className="prazo-avisos">
+                        <span className="prazo-avisos-rotulo">Avisos:</span>
+                        {datasDeAviso(z.vencimento).map((a) => (
+                          <span key={a.dias} className="prazo-aviso-data">{`${a.dias} d.u. em ${dataCurta(a.data).slice(0, 5)}`}</span>
+                        ))}
                       </span>
                       <button type="button" className="link" onClick={() => concluirPrazo(p.id, z.id)}>
                         Marcar como cumprido
@@ -214,7 +217,7 @@ export function ProcessoDetalhe() {
               </button>
             )}
           </Secao>
-        </aside>
+        </div>
       </div>
 
       {novoPrazo && <RegistrarPrazo p={p} onFechar={() => setNovoPrazo(false)} />}
@@ -252,8 +255,8 @@ function RegistrarPrazo({ p, onFechar }: { p: Processo; onFechar: () => void }) 
           <input required value={descricao} placeholder="Ex.: Manifestação sobre documentos" onChange={(e) => setDescricao(e.target.value)} />
         </Campo>
         <div className="alternador" role="group" aria-label="Forma de informar o prazo">
-          <button type="button" className={modo === "dias" ? "on" : ""} onClick={() => setModo("dias")}>Quantidade de dias úteis</button>
-          <button type="button" className={modo === "data" ? "on" : ""} onClick={() => setModo("data")}>Data final</button>
+          <button type="button" aria-pressed={modo === "dias"} className={modo === "dias" ? "on" : ""} onClick={() => setModo("dias")}>Quantidade de dias úteis</button>
+          <button type="button" aria-pressed={modo === "data"} className={modo === "data" ? "on" : ""} onClick={() => setModo("data")}>Data final</button>
         </div>
         {modo === "dias" ? (
           <Campo rotulo="Dias úteis a partir de hoje">

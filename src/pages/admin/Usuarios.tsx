@@ -58,7 +58,7 @@ export function Usuarios() {
         </tbody>
       </table>
 
-      <div className="pagina-estreita">
+      <div className="pagina-estreita secao-referencia">
         <Secao titulo="Acesso de referência" nota="proposta da equipe, a confirmar (RN11)">
           <p className="corpo">
             Estagiários não têm acesso próprio aos tribunais. Os processos deles, e os que estão sem responsável, são

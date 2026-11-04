@@ -31,56 +31,58 @@ export function Login() {
 
   return (
     <div className="login">
-      <div className="login-marca">
-        <span className="logo" aria-hidden>B</span>
-        <div>
-          <strong>Bezerril Advocacia</strong>
-          <span className="nota">Acompanhamento processual</span>
-        </div>
-      </div>
-      <div className="login-cartao">
-        <form onSubmit={enviar}>
-          <h1>{recuperar ? "Recuperar senha" : "Entrar"}</h1>
-          <Campo rotulo="E-mail">
-            <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off" />
-          </Campo>
-          {!recuperar && (
-            <Campo rotulo="Senha">
-              <input type="password" required value={senha} onChange={(e) => setSenha(e.target.value)} autoComplete="off" />
+      <header className="login-marca">
+        <p className="login-nome">Bezerril</p>
+        <p className="login-sub">
+          <span>Advocacia</span>
+          <span>Acompanhamento processual</span>
+        </p>
+      </header>
+      <main className="login-main">
+        <div className="login-miolo">
+          <form onSubmit={enviar}>
+            <h1>{recuperar ? "Recuperar senha" : "Entrar"}</h1>
+            <Campo rotulo="E-mail">
+              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="off" />
             </Campo>
-          )}
-          {erro && <p className="erro-form">{erro}</p>}
-          {enviado && <p className="ok-form">Se o e-mail estiver cadastrado, enviamos um link para criar outra senha.</p>}
-          <div className="form-acoes">
-            <button className="botao" type="submit">{recuperar ? "Enviar link" : "Entrar"}</button>
-            <button
-              type="button"
-              className="link"
-              onClick={() => {
-                setRecuperar((v) => !v);
-                setEnviado(false);
-                setErro(null);
-              }}
-            >
-              {recuperar ? "Voltar" : "Esqueci a senha"}
-            </button>
-          </div>
-        </form>
-      </div>
-      <div className="login-cartao login-contas">
-        <h2>Entrar na demonstração como</h2>
-        {CONTAS.map(({ id, nota }) => {
-          const u = estado.usuarios.find((x) => x.id === id);
-          if (!u || !u.ativo) return null;
-          return (
-            <button key={id} type="button" className="conta" onClick={() => entrar(id)}>
-              <strong>{u.nome}</strong>
-              <em>{PAPEL_LABEL[u.papel]}</em>
-              <span>{nota}</span>
-            </button>
-          );
-        })}
-      </div>
+            {!recuperar && (
+              <Campo rotulo="Senha">
+                <input type="password" required value={senha} onChange={(e) => setSenha(e.target.value)} autoComplete="off" />
+              </Campo>
+            )}
+            {erro && <p className="erro-form">{erro}</p>}
+            {enviado && <p className="ok-form">Se o e-mail estiver cadastrado, enviamos um link para criar outra senha.</p>}
+            <div className="form-acoes">
+              <button className="botao" type="submit">{recuperar ? "Enviar link" : "Entrar"}</button>
+              <button
+                type="button"
+                className="link"
+                onClick={() => {
+                  setRecuperar((v) => !v);
+                  setEnviado(false);
+                  setErro(null);
+                }}
+              >
+                {recuperar ? "Voltar" : "Esqueci a senha"}
+              </button>
+            </div>
+          </form>
+          <section className="login-contas" aria-labelledby="contas-titulo">
+            <h2 id="contas-titulo">Entrar na demonstração como</h2>
+            {CONTAS.map(({ id, nota }) => {
+              const u = estado.usuarios.find((x) => x.id === id);
+              if (!u || !u.ativo) return null;
+              return (
+                <button key={id} type="button" className="conta" onClick={() => entrar(id)}>
+                  <strong>{u.nome}</strong>
+                  <em>{PAPEL_LABEL[u.papel]}</em>
+                  <span>{nota}</span>
+                </button>
+              );
+            })}
+          </section>
+        </div>
+      </main>
     </div>
   );
 }

@@ -31,12 +31,12 @@ export function Historico() {
           <option value="sistema">Sistema</option>
           {estado.usuarios.map((u) => <option key={u.id} value={u.id}>{u.nome}</option>)}
         </select>
-        <span className="nota">{linhas.length} registros</span>
+        <span className="nota filtro-contagem">{linhas.length} registros</span>
       </div>
       {linhas.length === 0 ? (
         <Vazio>Nenhum registro com esses filtros.</Vazio>
       ) : (
-        <table className="tabela">
+        <table className="tabela tabela-historico">
           <thead>
             <tr>
               <th scope="col">Quando</th>
@@ -50,14 +50,14 @@ export function Historico() {
           <tbody>
             {linhas.slice(0, LIMITE).map((h) => (
               <tr key={h.id}>
-                <td data-rotulo="Quando" className="mono-pequeno">{dataHora(h.em)}</td>
+                <td data-rotulo="Quando" className="mono-pequeno col-data">{dataHora(h.em)}</td>
                 <td data-rotulo="Quem">{nomeUsuario(estado, h.usuarioId)}</td>
                 <td data-rotulo="O quê">{h.campo}</td>
                 <td data-rotulo="Processo">
                   {h.processoId ? <Link className="cnj" to={`/processos/${h.processoId}`}>{h.processoCnj}</Link> : <span className="fraco">—</span>}
                 </td>
-                <td data-rotulo="Antes" className="fraco">{h.anterior || "—"}</td>
-                <td data-rotulo="Depois">{h.novo}</td>
+                <td data-rotulo="Antes" className="antes">{h.anterior || "—"}</td>
+                <td data-rotulo="Depois" className="depois">{h.novo}</td>
               </tr>
             ))}
           </tbody>

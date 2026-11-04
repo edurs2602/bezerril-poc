@@ -80,14 +80,14 @@ export function Quadro() {
                     draggable
                     onDragStart={(e) => e.dataTransfer.setData("text/plain", p.id)}
                   >
-                    <Link to={`/processos/${p.id}`} draggable={false}><Cnj p={p} curto /></Link>
+                    <div className="ficha-topo">{z && <DiasUteis vencimento={z.vencimento} />}</div>
+                    <Link to={`/processos/${p.id}`} className="ficha-cnj" draggable={false}><Cnj p={p} curto /></Link>
                     <p className="ficha-autor">{p.autor}</p>
                     <p className="ficha-meta">
-                      {p.assunto} · {p.sistema}
+                      <span>{p.assunto}</span> <span>{p.sistema}</span>
                     </p>
                     <p className="ficha-meta">{nomeUsuario(estado, p.responsavelId)}</p>
                     <div className="ficha-rodape">
-                      {z && <DiasUteis vencimento={z.vencimento} />}
                       {novo && <span className="marca-novo">Andou hoje</span>}
                       {p.faseManual && <Carimbo tom="alerta">À mão</Carimbo>}
                       {p.segredo && <Carimbo tom="neutro">Segredo</Carimbo>}

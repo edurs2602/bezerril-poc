@@ -1,9 +1,71 @@
+/* Links de CNJ em tabela: tinta, peso 600, sublinhado só em hover/foco */
+.tabela td > a:has(.cnj), .tabela td > a.cnj { color: var(--tinta); font-weight: 600; text-decoration: none; }
+.tabela td > a:has(.cnj):hover, .tabela td > a:has(.cnj):focus-visible, .tabela td > a.cnj:hover, .tabela td > a.cnj:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: currentColor; }
+.tabela td > a:has(.cnj) + small { margin-top: var(--e1); }
+
+.acoes { white-space: nowrap; text-align: right; }
+.acoes .link + .link { margin-left: var(--e4); }
+
+/* Falhas: um grupo por motivo */
+.secao-falhas { margin-bottom: var(--e14); }
+.secao-falhas + .secao-falhas { margin-top: 0; }
+.secao-corpo > .faixa-simples { margin-bottom: var(--e4); }
 .tabela-falhas { table-layout: fixed; }
-.tabela-falhas th:first-child { width: 28%; }
-.acoes { white-space: nowrap; }
-.acoes .link + .link { margin-left: var(--e3); }
-.importar { display: flex; flex-direction: column; align-items: flex-start; gap: var(--e2); }
+.tabela-falhas th:nth-child(1) { width: 26%; }
+.tabela-falhas th:nth-child(2) { width: 16%; }
+.tabela-falhas th:nth-child(3) { width: 16%; }
+.tabela-falhas th:nth-child(4) { width: 9%; }
+.tabela-falhas th:nth-child(5) { width: 15%; }
+.tabela-falhas th:nth-child(6) { width: 18%; }
+.tabela-falhas td { overflow-wrap: anywhere; }
+.tabela-falhas td:last-child { text-align: right; }
+.tabela-falhas .cnj { white-space: nowrap; }
+
+/* Sem responsável: barra de ação */
+.barra-acao { justify-content: space-between; gap: var(--e3) var(--e6); margin-bottom: var(--e4); }
+.barra-acao > .nota { font-weight: 600; color: var(--tinta); font-size: var(--t-corpo); }
+.barra-acao-destino { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e2) var(--e3); }
+.barra-acao .filtro-rotulo { font-size: var(--t-corpo); }
+.tabela .col-marca { width: 52px; }
+.tabela .col-marca input { vertical-align: middle; }
+.tabela tbody tr.marcada td, .tabela tbody tr.marcada th { background: var(--papel-2); }
+.tabela tbody tr.marcada td:first-child, .tabela tbody tr.marcada th:first-child { box-shadow: calc(-1 * var(--e3)) 0 0 var(--papel-2); }
+.tabela tbody tr.marcada td:last-child { box-shadow: var(--e3) 0 0 var(--papel-2); }
+
+/* Usuários */
+.tabela tr.inativo td:first-child { color: var(--tinta-2); }
+.tabela tr.inativo td:first-child small { color: var(--tinta-2); }
+.secao-referencia .corpo { max-width: 62ch; }
+.secao-referencia select { width: 100%; max-width: 360px; }
+
+/* Histórico */
+.filtros .filtro-contagem { margin-left: auto; font-weight: 600; color: var(--tinta); }
+.tabela-historico { table-layout: auto; }
+.tabela-historico td.col-data { width: 128px; white-space: nowrap; }
+.tabela-historico .cnj { white-space: nowrap; }
+.tabela-historico td.antes { color: var(--tinta-2); font-weight: 400; }
+.tabela-historico td.depois { color: var(--tinta); font-weight: 500; }
+.tabela-historico td { overflow-wrap: anywhere; }
+
+/* Importar */
+.importar { display: flex; flex-direction: column; align-items: flex-start; gap: var(--e4); }
+.importar .corpo { margin-bottom: 0; }
+
+/* Acessos */
+.acessos-vazio { max-width: 62ch; }
 
 @media (max-width: 720px) {
   .tabela-falhas { table-layout: auto; }
+  .tabela-falhas th:nth-child(n) { width: auto; }
+  .tabela td > a:has(.cnj), .tabela td > a.cnj { min-height: 44px; display: inline-flex; align-items: center; }
+  .barra-acao { flex-direction: column; align-items: stretch; }
+  .barra-acao-destino { flex-direction: column; align-items: stretch; }
+  .barra-acao-destino .filtro-rotulo { flex-direction: column; align-items: stretch; }
+  .barra-acao-destino select, .barra-acao-destino .botao { width: 100%; }
+  .tabela tbody td.col-marca { justify-content: flex-start; }
+  .tabela tbody td.col-marca input { width: 24px; height: 24px; margin: 10px 0; }
+  .tabela tbody tr.marcada { background: var(--papel-2); }
+  .tabela tbody tr.marcada td { background: none; box-shadow: none; }
+  .filtros .filtro-contagem { margin-left: 0; flex-basis: 100%; }
+  .tabela td.acoes { justify-content: flex-start; gap: var(--e4); text-align: left; }
 }

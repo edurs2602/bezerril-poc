@@ -1,29 +1,34 @@
-.login { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--e4); padding: var(--e8) var(--e4); }
-.login-marca { display: flex; flex-direction: column; align-items: center; gap: var(--e2); text-align: center; margin-bottom: var(--e1); }
-.login-marca .logo {
-  width: 44px; height: 44px; display: grid; place-items: center;
-  background: var(--pinho); color: #fff; font-family: var(--serifa); font-weight: 600; font-size: 22px;
+.login { min-height: 100vh; display: grid; grid-template-columns: 55fr 45fr; }
+.login-marca {
+  background: var(--pinho); color: #fff;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: var(--e4);
+  padding: var(--e10) var(--e14);
 }
-.login-marca strong { display: block; font-family: var(--serifa); font-size: var(--t-secao); font-weight: 600; }
-.login-marca span.nota { display: block; }
-.login-cartao { width: 100%; max-width: 420px; padding: var(--e6); background: var(--papel); }
-.login-cartao form { display: flex; flex-direction: column; gap: var(--e3); }
-.login-cartao h1 { font-family: var(--serifa); font-size: var(--t-secao); font-weight: 600; }
-.login-cartao .botao[type="submit"] { flex: 1 1 100%; }
-.login-cartao .form-acoes { justify-content: center; }
+.login-nome { font-family: var(--serifa); font-weight: 600; font-size: clamp(64px, 9vw, 150px); line-height: 0.95; letter-spacing: -0.035em; }
+.login-sub { display: flex; flex-direction: column; gap: 2px; font-size: var(--t-corpo); color: #fff; }
+.login-main { background: var(--papel); display: flex; align-items: center; padding: var(--e10) var(--e8); }
+.login-miolo { width: 100%; max-width: 380px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--e10); }
+.login-miolo form { display: flex; flex-direction: column; gap: var(--e3); }
+.login h1 { font-family: var(--serifa); font-size: var(--t-pagina); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: var(--e2); }
+.login .botao[type="submit"] { flex: 1 1 100%; }
+.login .form-acoes { gap: var(--e3) var(--e4); }
 .erro-form { color: var(--lacre); font-weight: 600; font-size: var(--t-mini); }
 .ok-form { color: var(--sucesso); font-size: var(--t-mini); }
-.login-contas { padding: var(--e4) var(--e6) var(--e3); }
-.login-contas h2 { font-size: var(--t-corpo); font-weight: 600; margin-bottom: var(--e1); }
-.conta { display: grid; grid-template-columns: 1fr auto; gap: 0 var(--e2); width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--borda); padding: var(--e3) 0; cursor: pointer; }
-.conta:last-child { border-bottom: 0; }
-.conta strong { font-weight: 600; color: var(--link); }
-.conta em { font-style: normal; font-size: var(--t-mini); color: var(--tinta-2); }
+.login-contas h2 { font-size: var(--t-corpo); font-weight: 600; padding-bottom: var(--e2); border-bottom: 2px solid var(--tinta); }
+.conta {
+  display: grid; grid-template-columns: 1fr auto; gap: 0 var(--e3); width: 100%; min-height: 44px; text-align: left;
+  background: none; border: 0; border-bottom: 1px solid var(--borda); padding: var(--e3) 0; cursor: pointer;
+}
+.conta:hover { background: var(--papel-2); box-shadow: var(--e3) 0 0 var(--papel-2), calc(-1 * var(--e3)) 0 0 var(--papel-2); }
+.conta strong { font-weight: 600; color: var(--tinta); }
+.conta em { font-style: normal; font-size: var(--t-mini); color: var(--tinta-2); align-self: center; }
 .conta span { grid-column: 1 / -1; font-size: var(--t-mini); color: var(--tinta-2); }
-.conta:hover strong { text-decoration: underline; }
 
 @media (max-width: 720px) {
-  .login { justify-content: flex-start; }
-  .login-cartao { padding: var(--e4); }
-  .login-contas { padding: var(--e4) var(--e4) var(--e2); }
+  .login { display: block; min-height: 0; }
+  .login-marca { height: 180px; padding: var(--e4) var(--e4) var(--e6); gap: var(--e2); }
+  .login-nome { font-size: clamp(56px, 22vw, 96px); }
+  .login-sub { flex-direction: row; gap: var(--e3); font-size: var(--t-mini); flex-wrap: wrap; }
+  .login-main { padding: var(--e8) var(--e4) var(--e10); display: block; }
+  .login-miolo { gap: var(--e8); }
 }

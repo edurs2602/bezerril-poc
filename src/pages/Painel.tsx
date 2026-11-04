@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Carimbo, Cnj, DiasUteis, Indicador, Secao, Titulo, Vazio } from "../components/ui";
+import { Carimbo, Cnj, Indicador, Secao, Titulo, Vazio } from "../components/ui";
 import { dataCurta, diaDaSemana, diasUteisAte, ehHoje, hora, rotuloDiasUteis } from "../domain/dates";
 import { FASES, SISTEMAS, type Processo } from "../domain/types";
 import { nomeUsuario, useStore, useUsuario } from "../store/store";
@@ -43,10 +43,10 @@ export function Painel() {
       <Titulo
         acao={
           <div className="alternador" role="group" aria-label="Escopo">
-            <button type="button" className={escopo === "meus" ? "on" : ""} onClick={() => setEscopo("meus")}>
+            <button type="button" className={escopo === "meus" ? "on" : ""} aria-pressed={escopo === "meus"} onClick={() => setEscopo("meus")}>
               Meus processos
             </button>
-            <button type="button" className={escopo === "todos" ? "on" : ""} onClick={() => setEscopo("todos")}>
+            <button type="button" className={escopo === "todos" ? "on" : ""} aria-pressed={escopo === "todos"} onClick={() => setEscopo("todos")}>
               Todo o escritório
             </button>
           </div>
@@ -54,6 +54,48 @@ export function Painel() {
       >
         Painel
       </Titulo>
+
+      <section className="partidas faixa-escura" aria-labelledby="partidas-titulo">
+        <header className="partidas-cab">
+          <div>
+            <h2 id="partidas-titulo">Próximos prazos</h2>
+            <p className="partidas-nota">Contados em dias úteis</p>
+          </div>
+          <Link to="/processos?prazo=5">Ver todos</Link>
+        </header>
+        {prazos.length === 0 ? (
+          <p className="partidas-vazio">Nenhum prazo em aberto neste recorte.</p>
+        ) : (
+          <table className="partidas-tabela">
+            <thead>
+              <tr>
+                <th scope="col">Restam</th>
+                <th scope="col">Prazo</th>
+                <th scope="col">Vencimento</th>
+                {escopo === "todos" && <th scope="col">Responsável</th>}
+              </tr>
+            </thead>
+            <tbody>
+              {prazos.map(({ p, z, d }) => (
+                <tr key={z.id}>
+                  <td data-rotulo="Restam"><Contagem d={d} /></td>
+                  <td data-rotulo="Prazo" className="partidas-prazo">
+                    <Link to={`/processos/${p.id}`}>{z.descricao}</Link>
+                    <small>
+                      <Cnj p={p} /> {p.assunto}
+                      {p.segredo && " · segredo de justiça"}
+                    </small>
+                  </td>
+                  <td data-rotulo="Vencimento" className="sem-quebra partidas-venc">
+                    {diaDaSemana(z.vencimento)}, {dataCurta(z.vencimento).slice(0, 5)}
+                  </td>
+                  {escopo === "todos" && <td data-rotulo="Responsável" className="partidas-resp">{nomeUsuario(estado, p.responsavelId)}</td>}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </section>
 
       <div className="indicadores">
         <Indicador rotulo="Processos acompanhados" valor={base.length} para="/processos" />
@@ -85,41 +127,6 @@ export function Painel() {
 
       <div className="painel-grade">
         <div className="painel-principal">
-          <Secao titulo="Próximos prazos" nota="Contados em dias úteis" acao={<Link to="/processos?prazo=5">Ver todos</Link>}>
-            {prazos.length === 0 ? (
-              <Vazio>Nenhum prazo em aberto neste recorte.</Vazio>
-            ) : (
-              <table className="tabela tabela-lista">
-                <thead>
-                  <tr>
-                    <th scope="col">Restam</th>
-                    <th scope="col">Prazo</th>
-                    <th scope="col">Vencimento</th>
-                    {escopo === "todos" && <th scope="col">Responsável</th>}
-                  </tr>
-                </thead>
-                <tbody>
-                  {prazos.map(({ p, z }) => (
-                    <tr key={z.id}>
-                      <td data-rotulo="Restam"><DiasUteis vencimento={z.vencimento} /></td>
-                      <td data-rotulo="Prazo">
-                        <Link to={`/processos/${p.id}`}>{z.descricao}</Link>
-                        <small>
-                          <Cnj p={p} /> · {p.assunto}
-                          {p.segredo && " · segredo de justiça"}
-                        </small>
-                      </td>
-                      <td data-rotulo="Vencimento" className="sem-quebra">
-                        {diaDaSemana(z.vencimento)}, {dataCurta(z.vencimento).slice(0, 5)}
-                      </td>
-                      {escopo === "todos" && <td data-rotulo="Responsável">{nomeUsuario(estado, p.responsavelId)}</td>}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </Secao>
-
           <Secao titulo="Movimentações de hoje" nota={consulta}>
             {movimentacoes.length === 0 ? (
               <Vazio>Nenhuma movimentação neste recorte.</Vazio>
@@ -163,7 +170,9 @@ export function Painel() {
                   <tr key={fase} title={`${fase}: ${n} processos`}>
                     <th scope="row">{fase}</th>
                     <td className="fases-barra">
-                      <span style={{ width: `${(n / maxFase) * 100}%` }} />
+                      <span className="trilha" aria-hidden>
+                        <span style={{ width: `${(n / maxFase) * 100}%` }} />
+                      </span>
                     </td>
                     <td className="num">{n}</td>
                   </tr>
@@ -176,6 +185,22 @@ export function Painel() {
         </aside>
       </div>
     </div>
+  );
+}
+
+/** Numeral grande + unidade; o texto completo fica para leitor de tela. */
+function Contagem({ d }: { d: number }) {
+  const nivel = d <= 1 ? "u1" : d <= 3 ? "u3" : "u5";
+  const completo = rotuloDiasUteis(d);
+  const hoje = d === 0;
+  return (
+    <span className={`contagem-du ${nivel}${hoje ? " hoje" : ""}`}>
+      <span className="sr">{completo}</span>
+      <span className="contagem-visual" aria-hidden>
+        <span className="contagem-num">{hoje ? "hoje" : d < 0 ? `\u2212${-d}` : d}</span>
+        {!hoje && <span className="contagem-un">d.u.</span>}
+      </span>
+    </span>
   );
 }
 
