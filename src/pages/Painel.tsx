@@ -212,7 +212,7 @@ function Madrugada({ processos }: { processos: Processo[] }) {
   });
   return (
     <Secao titulo="Consulta da madrugada" nota="Terminou às 03h40. Avisos enviados às 07h00." acao={<Link to="/admin/falhas">Ver falhas</Link>}>
-      <table className="tabela">
+      <table className="tabela tabela-compacta">
         <thead>
           <tr>
             <th scope="col">Sistema</th>

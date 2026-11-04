@@ -1,5 +1,11 @@
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-padding-top: 72px; scroll-padding-bottom: 72px; }
+@media (max-width: 720px) { html { scroll-padding-bottom: 16px; } }
+button, a, select, input, summary, [role="button"] { touch-action: manipulation; }
+h1, h2, h3 { text-wrap: balance; }
+.resumo, .corpo { text-wrap: pretty; }
+.pular { position: fixed; left: var(--e3); top: var(--e3); z-index: 100; background: var(--tinta); color: #fff; padding: var(--e2) var(--e4); border-radius: var(--raio-controle); transform: translateY(-200%); }
+.pular:focus { transform: none; }
 body {
   margin: 0;
   background: var(--papel);
@@ -67,6 +73,10 @@ input[type="checkbox"] { accent-color: var(--pinho); width: 18px; height: 18px; 
 .mono { font-variant-numeric: tabular-nums; }
 .mono-pequeno { font-size: var(--t-mini); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .cnj { font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Numerais de texto em Public Sans: tabulares, com o espaçamento compensado (nunca nos numerais em serifa) */
+.num, .mono, .mono-pequeno, .cnj, .du, .dado-valor, .tabela .num,
+.linha-tempo time, .historico-curto time, .aviso-linha time,
+.prazos-lista .prazo-aviso-data, .documentos .fraco, .partidas-venc { letter-spacing: -0.03em; }
 .sem-quebra { white-space: nowrap; }
 .corpo { max-width: 62ch; margin-bottom: var(--e3); }
 

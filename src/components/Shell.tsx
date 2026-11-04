@@ -59,6 +59,7 @@ export function Shell() {
 
   return (
     <div className="app">
+      <a href="#conteudo" className="pular">Pular para o conteúdo</a>
       <aside className={menuAberto ? "lateral aberta" : "lateral"} aria-label="Barra lateral">
         <Link to="/" className="marca" onClick={fechar}>
           <span className="marca-nome">
@@ -110,7 +111,7 @@ export function Shell() {
           </div>
         </header>
 
-        <main className="conteudo">
+        <main className="conteudo" id="conteudo" tabIndex={-1}>
           <Outlet />
         </main>
 

@@ -19,7 +19,7 @@
   display: grid; grid-template-columns: 1fr auto; gap: 0 var(--e3); width: 100%; min-height: 44px; text-align: left;
   background: none; border: 0; border-bottom: 1px solid var(--borda); padding: var(--e3) 0; cursor: pointer;
 }
-.conta:hover { background: var(--papel-2); box-shadow: var(--e3) 0 0 var(--papel-2), calc(-1 * var(--e3)) 0 0 var(--papel-2); }
+@media (hover: hover) { .conta:hover { background: var(--papel-2); box-shadow: var(--e3) 0 0 var(--papel-2), calc(-1 * var(--e3)) 0 0 var(--papel-2); } }
 .conta strong { font-weight: 600; color: var(--tinta); }
 .conta em { font-style: normal; font-size: var(--t-mini); color: var(--tinta-2); align-self: center; }
 .conta span { grid-column: 1 / -1; font-size: var(--t-mini); color: var(--tinta-2); }

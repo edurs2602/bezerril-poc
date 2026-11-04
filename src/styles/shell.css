@@ -81,6 +81,7 @@
     position: fixed; left: 0; top: 0; bottom: 0; width: 260px; z-index: 30; height: auto;
     transform: translateX(-100%); visibility: hidden; transition: transform 0.18s ease, visibility 0.18s;
   }
+  .lateral { overscroll-behavior: contain; }
   .lateral.aberta { transform: none; visibility: visible; }
   .lateral-fundo { display: block; position: fixed; inset: 0; z-index: 25; background: rgba(20, 32, 28, 0.55); }
   .menu-botao { display: inline-grid; }
@@ -96,3 +97,4 @@
   .barra-demo select { flex: 1; min-width: 0; min-height: 44px; }
   .aviso { left: var(--e2); right: var(--e2); bottom: var(--e3); max-width: none; }
 }
+.conteudo:focus { outline: none; }

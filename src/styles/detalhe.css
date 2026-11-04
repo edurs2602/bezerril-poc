@@ -4,7 +4,7 @@
 /* Capa de autos */
 .detalhe-cab { padding: 0 0 var(--e6); margin-bottom: var(--e8); border-bottom: 2px solid var(--tinta); }
 .detalhe-cab h1 { font-family: var(--serifa); font-size: 36px; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
-.detalhe-cab h1 .cnj { font-size: inherit; white-space: nowrap; }
+.detalhe-cab h1 .cnj { font-size: inherit; white-space: nowrap; letter-spacing: inherit; }
 .detalhe-partes { font-size: 20px; font-weight: 500; line-height: 1.35; margin: var(--e3) 0 var(--e2); }
 .detalhe-partes em { font-style: normal; font-weight: 400; color: var(--tinta-2); }
 .detalhe-meta { display: flex; flex-wrap: wrap; gap: 0 var(--e6); font-size: var(--t-corpo); color: var(--tinta-2); }

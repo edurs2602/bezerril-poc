@@ -1,6 +1,3 @@
-/* Links de CNJ em tabela: tinta, peso 600, sublinhado só em hover/foco */
-.tabela td > a:has(.cnj), .tabela td > a.cnj { color: var(--tinta); font-weight: 600; text-decoration: none; }
-.tabela td > a:has(.cnj):hover, .tabela td > a:has(.cnj):focus-visible, .tabela td > a.cnj:hover, .tabela td > a.cnj:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: currentColor; }
 .tabela td > a:has(.cnj) + small { margin-top: var(--e1); }
 
 .acoes { white-space: nowrap; text-align: right; }

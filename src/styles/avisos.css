@@ -8,7 +8,7 @@
   background: var(--papel-2); border-bottom: 1px solid var(--borda);
 }
 .aviso-linha.lido { background: var(--papel); }
-.aviso-linha:hover { background: color-mix(in srgb, var(--papel-2) 80%, var(--tinta) 7%); }
+@media (hover: hover) { .aviso-linha:hover { background: color-mix(in srgb, var(--papel-2) 80%, var(--tinta) 7%); } }
 .aviso-linha a { display: flex; flex-direction: column; gap: 2px; color: var(--tinta); min-width: 0; text-decoration: none; }
 .aviso-linha a::after { content: ""; position: absolute; inset: 0; }
 .aviso-linha a:focus-visible { outline: none; }

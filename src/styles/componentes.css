@@ -91,12 +91,17 @@
 .tabela tbody td, .tabela tbody th { padding: var(--e3); border-bottom: 1px solid var(--borda); vertical-align: top; }
 .tabela thead th:first-child, .tabela tbody td:first-child, .tabela tbody th:first-child { padding-left: 0; }
 .tabela thead th:last-child, .tabela tbody td:last-child, .tabela tbody th:last-child { padding-right: 0; }
-.tabela tbody tr:hover td, .tabela tbody tr:hover th { background: var(--papel-2); }
-.tabela tbody tr:hover td:first-child, .tabela tbody tr:hover th:first-child { box-shadow: calc(-1 * var(--e3)) 0 0 var(--papel-2); }
-.tabela tbody tr:hover td:last-child, .tabela tbody tr:hover th:last-child { box-shadow: var(--e3) 0 0 var(--papel-2); }
-.tabela tbody tr:hover td:first-child:last-child { box-shadow: calc(-1 * var(--e3)) 0 0 var(--papel-2), var(--e3) 0 0 var(--papel-2); }
+@media (hover: hover) {
+  .tabela tbody tr:hover td, .tabela tbody tr:hover th { background: var(--papel-2); }
+  .tabela tbody tr:hover td:first-child, .tabela tbody tr:hover th:first-child { box-shadow: calc(-1 * var(--e3)) 0 0 var(--papel-2); }
+  .tabela tbody tr:hover td:last-child, .tabela tbody tr:hover th:last-child { box-shadow: var(--e3) 0 0 var(--papel-2); }
+  .tabela tbody tr:hover td:first-child:last-child { box-shadow: calc(-1 * var(--e3)) 0 0 var(--papel-2), var(--e3) 0 0 var(--papel-2); }
+}
 .tabela small { display: block; color: var(--tinta-2); font-size: var(--t-mini); }
 .tabela .num { text-align: right; font-variant-numeric: tabular-nums; }
+/* Links de CNJ em tabela: tinta, peso 600, sublinhado só em hover/foco */
+.tabela td > a:has(.cnj), .tabela td > a.cnj { color: var(--tinta); font-weight: 600; text-decoration: none; }
+.tabela td > a:has(.cnj):hover, .tabela td > a:has(.cnj):focus-visible, .tabela td > a.cnj:hover, .tabela td > a.cnj:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: currentColor; }
 .tabela tr.inativo { color: var(--tinta-2); }
 
 /* Modal e formulários */
@@ -104,6 +109,7 @@
   border: 0; border-radius: var(--raio-modal); background: var(--papel); color: var(--tinta); padding: 0;
   width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 24px);
   box-shadow: 0 16px 48px rgba(20, 32, 28, 0.32);
+  overscroll-behavior: contain;
 }
 .modal[open] { animation: modal-entra 160ms ease-out; }
 .modal-largo { width: min(720px, calc(100vw - 24px)); }
@@ -150,7 +156,6 @@
   .tabela tbody tr { border-bottom: 1px solid var(--borda); padding: var(--e3) 0; }
   .tabela tbody tr:last-child { border-bottom: 0; }
   .tabela tbody td, .tabela tbody th { display: flex; justify-content: space-between; gap: var(--e3); border: 0; padding: var(--e1) 0; text-align: right; }
-  .tabela tbody tr:hover td, .tabela tbody tr:hover th { background: none; box-shadow: none; }
   .tabela tbody td:empty { display: none; }
   .tabela tbody td[data-rotulo]::before, .tabela tbody th[data-rotulo]::before {
     content: attr(data-rotulo); color: var(--tinta-2); font-weight: 400; font-size: var(--t-mini); text-align: left; flex-shrink: 0;
@@ -160,7 +165,24 @@
   .tabela td small { display: inline; }
 
   /* Tabelas do painel: uma informação abaixo da outra, sem rótulos */
-  .tabela-lista tbody td { display: block; padding: 2px 0; text-align: left; }
+  .tabela-lista tbody tr { padding: var(--e4) 0; }
+  .tabela-lista tbody td { display: block; padding: 0; text-align: left; }
   .tabela-lista tbody td[data-rotulo]::before { content: none; }
   .tabela-lista td small { display: block; }
+}
+
+/* Tabela curta de poucas colunas: continua tabela no celular */
+@media (max-width: 720px) {
+  .tabela-compacta thead { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+  .tabela-compacta { display: table; }
+  .tabela-compacta tbody { display: table-row-group; }
+  .tabela-compacta thead { display: table-header-group; }
+  .tabela-compacta tr { display: table-row; width: auto; }
+  .tabela-compacta thead th, .tabela-compacta tbody td, .tabela-compacta tbody th { display: table-cell; padding: var(--e3) var(--e2); }
+  .tabela-compacta tbody tr { padding: 0; border-bottom: 0; }
+  .tabela-compacta tbody td, .tabela-compacta tbody th { border-bottom: 1px solid var(--borda); text-align: left; }
+  .tabela-compacta tbody td.num, .tabela-compacta thead th.num { text-align: right; }
+  .tabela-compacta tbody td[data-rotulo]::before, .tabela-compacta tbody th[data-rotulo]::before { content: none; }
+  .tabela-compacta thead th:first-child, .tabela-compacta tbody th:first-child { padding-left: 0; }
+  .tabela-compacta thead th:last-child, .tabela-compacta tbody td:last-child { padding-right: 0; }
 }
