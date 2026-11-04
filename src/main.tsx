@@ -1,10 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "@fontsource/ibm-plex-sans/400.css";
-import "@fontsource/ibm-plex-sans/500.css";
-import "@fontsource/ibm-plex-sans/600.css";
-import "./styles.css";
+import "@fontsource-variable/public-sans/wght.css";
+import "@fontsource-variable/source-serif-4/opsz.css";
+import "./styles/index.css";
 import { App } from "./App";
 import { StoreProvider } from "./store/store";
 

@@ -1,0 +1,166 @@
+/* Título de página */
+.titulo-pagina { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--e6); margin-bottom: var(--e8); }
+.titulo-pagina h1 { font-family: var(--serifa); font-size: var(--t-pagina); font-weight: 600; line-height: 1.15; letter-spacing: -0.015em; }
+.titulo-pagina .nota { margin-top: var(--e2); max-width: 80ch; font-size: var(--t-corpo); }
+.titulo-acao { flex-shrink: 0; }
+
+/* Seção: sem card, alinhada à borda da página */
+.secao { margin-bottom: var(--e14); }
+.secao-cab { display: flex; align-items: baseline; justify-content: space-between; gap: var(--e4); margin-bottom: var(--e3); }
+.secao-cab h2 { font-family: var(--serifa); font-size: var(--t-secao); font-weight: 600; line-height: 1.25; }
+.secao-cab .nota { margin-top: var(--e1); }
+.secao-acao { flex-shrink: 0; font-size: var(--t-mini); }
+.secao-corpo > .nota { display: block; margin-top: var(--e2); }
+.secao-corpo > select { width: 100%; }
+.secao-corpo > .link { margin-top: var(--e2); }
+.secao-corpo > .faixa + .tabela { margin-top: var(--e3); }
+.pagina-estreita { max-width: 880px; }
+.pagina-estreita .secao { margin-top: var(--e10); }
+.mais { padding: var(--e4) 0; }
+
+/* Indicadores: tira corrida de números */
+.indicadores { display: flex; flex-wrap: wrap; gap: var(--e4) var(--e10); margin-bottom: var(--e10); }
+.indicador { display: flex; flex-direction: column; gap: var(--e1); padding: 0; color: var(--tinta); background: none; border: 0; text-decoration: none; }
+.indicador.com-link:hover { color: var(--tinta); text-decoration: none; }
+.indicador.com-link:hover .indicador-rotulo { text-decoration: underline; text-underline-offset: 3px; }
+.indicador-rotulo { color: var(--tinta-2); font-size: var(--t-mini); }
+.indicador-valor { font-family: var(--serifa); font-size: 32px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.indicador-valor.perigo { color: var(--lacre); }
+.indicador-detalhe { color: var(--tinta-2); font-size: var(--t-mini); }
+
+/* Rótulo e valor */
+.dado { display: flex; justify-content: space-between; gap: var(--e3); padding: var(--e2) 0; border-bottom: 1px solid var(--borda); }
+.dado:last-child { border-bottom: 0; }
+.dado-rotulo { color: var(--tinta-2); }
+.dado-valor { font-weight: 500; font-variant-numeric: tabular-nums; text-align: right; }
+.dado-valor.forte { color: var(--lacre); font-weight: 600; }
+
+.vazio { color: var(--tinta-2); font-size: var(--t-corpo); padding: var(--e4) 0; text-align: left; }
+
+/* Carimbos: retangulares, contornados */
+.carimbo, .marca-novo {
+  display: inline-block; padding: 0 var(--e2); border-radius: var(--raio-carimbo);
+  background: transparent; border: 1.5px solid currentColor;
+  font-size: var(--t-mini); font-weight: 600; line-height: 1.5; white-space: nowrap;
+}
+.carimbo-perigo { color: var(--lacre); }
+.carimbo-alerta { color: var(--ambar); }
+.carimbo-neutro { color: var(--tinta-2); }
+.carimbo-sucesso { color: var(--sucesso); }
+.carimbo-info, .marca-novo { color: var(--link); }
+
+/* Escala de urgência dos dias úteis */
+.du { display: inline-block; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--tinta); font-weight: 500; }
+.du-5, .du-3, .du-1 { padding: 0 var(--e2); border-radius: var(--raio-carimbo); }
+.du-5 { background: var(--ambar-claro); color: var(--ambar); }
+.du-3 { background: var(--lacre-claro); color: var(--lacre); }
+.du-1 { background: var(--lacre); color: #fff; font-weight: 700; }
+
+/* Alternador segmentado */
+.alternador { display: inline-flex; border: 1px solid var(--borda-campo); border-radius: var(--raio-controle); overflow: hidden; }
+.alternador button { background: transparent; border: 0; padding: 0 var(--e4); min-height: 38px; cursor: pointer; font-size: var(--t-mini); font-weight: 500; color: var(--tinta); }
+.alternador button + button { border-left: 1px solid var(--borda-campo); }
+.alternador button:hover { background: var(--papel-2); }
+.alternador button.on, .alternador button[aria-pressed="true"] { background: var(--pinho); color: #fff; font-weight: 600; }
+.alternador button:focus-visible { outline-offset: -4px; }
+
+/* Faixa de alerta */
+.faixa {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--e2) var(--e4);
+  background: var(--lacre-claro); color: var(--lacre-escuro);
+  padding: var(--e3) var(--e4); margin-bottom: var(--e4);
+}
+.faixa a, .faixa .link { color: var(--lacre-escuro); }
+
+/* Filtros */
+.filtros {
+  display: flex; flex-wrap: wrap; gap: var(--e2); align-items: center; margin-bottom: var(--e6); padding: var(--e3);
+  background: var(--papel-2); border-radius: var(--raio-controle);
+}
+.filtro-busca { flex: 1 1 260px; min-width: 200px; }
+.filtro-rotulo { display: inline-flex; gap: var(--e2); align-items: center; font-size: var(--t-mini); }
+
+/* Tabela: sem card; a primeira coluna alinha com o título da página */
+.tabela { width: 100%; border-collapse: separate; border-spacing: 0; background: none; }
+.tabela thead th {
+  text-align: left; font-weight: 600; font-size: var(--t-mini); color: var(--tinta-2);
+  padding: var(--e2) var(--e3); border-bottom: 2px solid var(--tinta); white-space: nowrap;
+}
+.tabela thead th.num { text-align: right; }
+.tabela tbody th { text-align: left; font-weight: 600; }
+.tabela tbody td, .tabela tbody th { padding: var(--e3); border-bottom: 1px solid var(--borda); vertical-align: top; }
+.tabela thead th:first-child, .tabela tbody td:first-child, .tabela tbody th:first-child { padding-left: 0; }
+.tabela thead th:last-child, .tabela tbody td:last-child, .tabela tbody th:last-child { padding-right: 0; }
+.tabela tbody tr:hover td, .tabela tbody tr:hover th { background: var(--papel-2); }
+.tabela tbody tr:hover td:first-child, .tabela tbody tr:hover th:first-child { box-shadow: calc(-1 * var(--e3)) 0 0 var(--papel-2); }
+.tabela tbody tr:hover td:last-child, .tabela tbody tr:hover th:last-child { box-shadow: var(--e3) 0 0 var(--papel-2); }
+.tabela tbody tr:hover td:first-child:last-child { box-shadow: calc(-1 * var(--e3)) 0 0 var(--papel-2), var(--e3) 0 0 var(--papel-2); }
+.tabela small { display: block; color: var(--tinta-2); font-size: var(--t-mini); }
+.tabela .num { text-align: right; font-variant-numeric: tabular-nums; }
+.tabela tr.inativo { color: var(--tinta-2); }
+
+/* Modal e formulários */
+.modal {
+  border: 0; border-radius: var(--raio-modal); background: var(--papel); color: var(--tinta); padding: 0;
+  width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 24px);
+  box-shadow: 0 16px 48px rgba(20, 32, 28, 0.32);
+}
+.modal[open] { animation: modal-entra 160ms ease-out; }
+.modal-largo { width: min(720px, calc(100vw - 24px)); }
+.modal::backdrop { background: rgba(20, 32, 28, 0.55); }
+.modal-corpo { padding: var(--e6); }
+.modal-cab { display: flex; justify-content: space-between; align-items: center; gap: var(--e4); margin-bottom: var(--e4); }
+.modal-cab h2 { font-family: var(--serifa); font-size: var(--t-secao); font-weight: 600; line-height: 1.25; }
+@keyframes modal-entra { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.campo { display: flex; flex-direction: column; gap: var(--e1); min-width: 0; }
+.campo-rotulo { font-size: var(--t-mini); font-weight: 600; }
+.campo input, .campo select { width: 100%; }
+.campo-ajuda { font-size: var(--t-mini); color: var(--tinta-2); }
+.campo-erro { font-size: var(--t-mini); color: var(--lacre); font-weight: 600; }
+.com-erro input, .com-erro select { border-color: var(--lacre); border-width: 2px; }
+.campo-check { display: flex; align-items: center; gap: var(--e2); align-self: end; min-height: 40px; }
+.form-coluna { display: flex; flex-direction: column; gap: var(--e3); align-items: stretch; }
+.form-coluna .alternador { align-self: flex-start; }
+.form-grade { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e3); }
+.form-grade > .campo:first-child, .form-dica, .span-2 { grid-column: 1 / -1; }
+.form-dica { margin-top: calc(-1 * var(--e2)); font-size: var(--t-mini); }
+.form-acoes { display: flex; align-items: center; flex-wrap: wrap; gap: var(--e2) var(--e4); }
+.previa-prazo { background: var(--papel-2); border-radius: var(--raio-controle); padding: var(--e3); }
+.previa-prazo ul { margin-top: var(--e1); color: var(--tinta-2); font-size: var(--t-mini); }
+
+@media (max-width: 720px) {
+  .titulo-pagina { flex-direction: column; align-items: stretch; gap: var(--e3); margin-bottom: var(--e6); }
+  .titulo-pagina h1 { font-size: 26px; }
+  .titulo-acao .botao, .titulo-acao select { width: 100%; }
+  .titulo-acao .alternador { display: flex; }
+  .titulo-acao .alternador button { flex: 1; }
+  .secao { margin-bottom: var(--e10); }
+  .indicadores { gap: var(--e4) var(--e6); margin-bottom: var(--e8); }
+  .filtros select { flex: 1 1 45%; min-width: 0; }
+  .filtro-busca { flex-basis: 100%; }
+  .alternador button { min-height: 44px; }
+  .modal-corpo { padding: var(--e4); }
+  .form-grade { grid-template-columns: minmax(0, 1fr); }
+  .form-grade > * { grid-column: 1 / -1; }
+
+  /* Tabela vira ficha, com o rótulo de cada coluna */
+  .tabela thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .tabela, .tabela tbody, .tabela tr { display: block; width: 100%; }
+  .tabela tbody tr { border-bottom: 1px solid var(--borda); padding: var(--e3) 0; }
+  .tabela tbody tr:last-child { border-bottom: 0; }
+  .tabela tbody td, .tabela tbody th { display: flex; justify-content: space-between; gap: var(--e3); border: 0; padding: var(--e1) 0; text-align: right; }
+  .tabela tbody tr:hover td, .tabela tbody tr:hover th { background: none; box-shadow: none; }
+  .tabela tbody td:empty { display: none; }
+  .tabela tbody td[data-rotulo]::before, .tabela tbody th[data-rotulo]::before {
+    content: attr(data-rotulo); color: var(--tinta-2); font-weight: 400; font-size: var(--t-mini); text-align: left; flex-shrink: 0;
+  }
+  .tabela td .cnj { white-space: normal; overflow-wrap: anywhere; }
+  .tabela td > a { min-width: 0; }
+  .tabela td small { display: inline; }
+
+  /* Tabelas do painel: uma informação abaixo da outra, sem rótulos */
+  .tabela-lista tbody td { display: block; padding: 2px 0; text-align: left; }
+  .tabela-lista tbody td[data-rotulo]::before { content: none; }
+  .tabela-lista td small { display: block; }
+}

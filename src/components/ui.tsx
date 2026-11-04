@@ -31,12 +31,12 @@ export function Secao({ titulo, nota, children, acao }: { titulo: string; nota?:
   );
 }
 
-/** Card de indicador do painel. */
+/** Indicador do painel: número grande com o rótulo abaixo. */
 export function Indicador({ rotulo, valor, detalhe, para, perigo }: { rotulo: string; valor: ReactNode; detalhe?: ReactNode; para?: string; perigo?: boolean }) {
   const conteudo = (
     <>
-      <span className="indicador-rotulo">{rotulo}</span>
       <strong className={perigo ? "indicador-valor perigo" : "indicador-valor"}>{valor}</strong>
+      <span className="indicador-rotulo">{rotulo}</span>
       {detalhe && <span className="indicador-detalhe">{detalhe}</span>}
     </>
   );

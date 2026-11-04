@@ -1,0 +1,16 @@
+/* Lista de processos no celular: três linhas por processo, para rolar rápido */
+@media (max-width: 720px) {
+  .tabela-processos tbody tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--e3); padding: var(--e3) 0; }
+  .tabela-processos tbody td { display: block; padding: 0; text-align: left; }
+  .tabela-processos tbody td[data-rotulo]::before { content: none; }
+  .tabela-processos td small { display: block; }
+  .tabela-processos td[data-rotulo="Processo"] { order: 1; flex: 1 1 60%; min-width: 0; }
+  .tabela-processos td[data-rotulo="Prazo"] { order: 2; }
+  .tabela-processos td[data-rotulo="Partes"] { order: 3; flex-basis: 100%; }
+  .tabela-processos td[data-rotulo="Partes"] small { display: none; }
+  .tabela-processos td[data-rotulo="Fase"], .tabela-processos td[data-rotulo="Sistema"], .tabela-processos td[data-rotulo="Responsável"] { font-size: var(--t-mini); color: var(--tinta-2); }
+  .tabela-processos td[data-rotulo="Fase"] { order: 4; }
+  .tabela-processos td[data-rotulo="Sistema"] { order: 5; }
+  .tabela-processos td[data-rotulo="Sistema"] small { display: inline; margin-left: var(--e1); }
+  .tabela-processos td[data-rotulo="Responsável"] { order: 6; }
+}

@@ -1,0 +1,9 @@
+.tabela-falhas { table-layout: fixed; }
+.tabela-falhas th:first-child { width: 28%; }
+.acoes { white-space: nowrap; }
+.acoes .link + .link { margin-left: var(--e3); }
+.importar { display: flex; flex-direction: column; align-items: flex-start; gap: var(--e2); }
+
+@media (max-width: 720px) {
+  .tabela-falhas { table-layout: auto; }
+}

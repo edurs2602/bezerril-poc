@@ -1,0 +1,11 @@
+.painel-grade { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--e8); align-items: start; }
+
+.fases { width: 100%; border-collapse: collapse; }
+.fases th { text-align: left; font-weight: 400; padding: var(--e1) var(--e3) var(--e1) 0; white-space: nowrap; width: 1%; color: var(--tinta-2); }
+.fases-barra { padding: var(--e1) 0; }
+.fases-barra span { display: block; height: 10px; border-radius: var(--raio-carimbo); background: var(--pinho); min-width: 2px; }
+.fases .num { width: 34px; padding-left: var(--e2); font-weight: 500; }
+
+@media (max-width: 1040px) {
+  .painel-grade { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}

@@ -1,0 +1,59 @@
+:root {
+  color-scheme: light;
+
+  /* Superfícies e texto */
+  --papel: #ffffff;
+  --papel-2: #eef1ee;
+  --tinta: #14201c;
+  --tinta-2: #4a5752;
+
+  /* Marca e ações */
+  --pinho: #0f3d33;
+  --pinho-escuro: #0a2e26;
+  --link: #0b5a48;
+
+  /* Urgência (fundo claro e painel escuro) */
+  --lacre: #b3261e;
+  --lacre-escuro: #86201a;
+  --lacre-claro: #fbe9e7;
+  --lacre-vivo: #e5484d;
+
+  /* Atenção */
+  --ambar: #7a4b00;
+  --ambar-claro: #fbebc8;
+  --ambar-vivo: #f2c14e;
+
+  /* Sucesso */
+  --sucesso: #1b6e3c;
+  --sucesso-claro: #e6f4ea;
+
+  /* Linhas */
+  --borda: #d5dbd7;
+  --borda-campo: #7f8c86;
+
+  /* Fontes */
+  --serifa: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
+  --sans: "Public Sans Variable", "Segoe UI", system-ui, sans-serif;
+
+  /* Espaço (múltiplos de 4) */
+  --e1: 4px;
+  --e2: 8px;
+  --e3: 12px;
+  --e4: 16px;
+  --e6: 24px;
+  --e8: 32px;
+  --e10: 40px;
+  --e14: 56px;
+
+  /* Raios */
+  --raio-controle: 4px;
+  --raio-carimbo: 2px;
+  --raio-modal: 6px;
+
+  /* Escala de tipo */
+  --t-mini: 13px;
+  --t-corpo: 15px;
+  --t-secao: 20px;
+  --t-pagina: 30px;
+  --t-numeral: 44px;
+}

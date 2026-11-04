@@ -59,13 +59,12 @@ export function Shell() {
 
   return (
     <div className="app">
-      <aside className={menuAberto ? "lateral aberta" : "lateral"}>
+      <aside className={menuAberto ? "lateral aberta" : "lateral"} aria-label="Barra lateral">
         <Link to="/" className="marca" onClick={fechar}>
-          <span className="logo" aria-hidden>B</span>
-          <span className="marca-texto">
-            Bezerril Advocacia
-            <small>Acompanhamento processual</small>
+          <span className="marca-nome">
+            Bezerril <small>Advocacia</small>
           </span>
+          <span className="marca-sub">Acompanhamento processual</span>
         </Link>
         <nav className="nav" aria-label="Principal">
           <Item para="/" fim icone={<LayoutDashboard size={18} aria-hidden />}>Painel</Item>
@@ -115,7 +114,7 @@ export function Shell() {
           <Outlet />
         </main>
 
-        <footer className="barra-demo">
+        <footer className="barra-demo" aria-label="Controles da demonstração">
           <span className="barra-demo-tag">Protótipo · dados fictícios</span>
           <label>
             Ver como
